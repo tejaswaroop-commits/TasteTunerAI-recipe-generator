@@ -16,39 +16,21 @@ import google.generativeai as genai
 # --- Dataclass Definition ---
 @dataclass
 class RecipeCriteria:
-    ingredients_available: List[str] = field(default_factory=list)
+    ingredients_available: List[str] = field(default _ factory=list)
     cuisine_preference: Optional[str] = None
     dietary_restrictions: List[str] = field(default_factory=list)
     max_prep_time_minutes: Optional[int] = None
     max_calories: Optional[int] = None
 
 # --- Flask App Initialization ---
-app = Flask(__name__)
+app = Flask(
 
 # --- Configuration ---
 app.config['SECRET_KEY'] = os.urandom(24)
-DATABASE = os.path.join(app.instance_path, 'users.db')
+DATABASE = os.path.(app.instance_path, 'users.db')
 
 # --- NEW: Configure Gemini API ---
-try:
-    api_key = os.getenv("GOOGLE_API_KEY")
-    if not api_key:
-        raise ValueError("GOOGLE_API_KEY environment variable not set.")
-    genai.configure(api_key=api_key)
-    # Choose a Gemini model (e.g., 'gemini-1.5-flash', 'gemini-pro')
-    # Using flash as it's generally faster and cheaper
-    gemini_model = genai.GenerativeModel('gemini-1.5-flash')
-    print("Gemini API Configured Successfully.")
-except Exception as e:
-    print("Error configuring Gemini API: {e}")
-    # Consider how to handle this - maybe disable LLM features?
-    gemini_model = None # Set model to None if config fails
 
-# Ensure the instance folder exists for the SQLite database
-try:
-    os.makedirs(app.instance_path)
-except OSError:
-    pass
 
 # --- Database Setup Functions (Standard sqlite3) ---
 def get_db():
