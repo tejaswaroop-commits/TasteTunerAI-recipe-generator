@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipe Generator{% endblock %}
+
+{% block content %}
+    <h1>Generate a Recipe</h1>
+    <form action="{{ url_for('generate_recipe') }}" method="post">
+        <label for="recipe_input">Describe what you'd like to cook (ingredients, cuisine, diet, time, calories):</label><br>
+        <textarea id="recipe_input" name="recipe_input" rows="4" cols="50" required></textarea><br><br>
+        <button type="submit">Generate Recipe</button>
+    </form>
+
+    {% if recipe %}
+        <h2>Generated Recipe:</h2>
+        {# Display recipe - using <pre> for simple formatting #}
+        <pre>{{ recipe }}</pre>
+        {# You might want to re-display the input too #}
+        {% if previous_input %}
+            <hr>
+            <p><em>Your request was: {{ previous_input }}</em></p>
+        {% endif %}
+    {% endif %}
+{% endblock %}
