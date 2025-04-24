@@ -247,7 +247,32 @@ def register():
     return render_template('register.html')
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """Handles user login."""
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password_attempt = request.form.get('password')
+        if not email or not password_attempt:
+             flash('Email and password are required.', 'danger')
+             return redirect(url_for('login'))
 
+        conn = get_db()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM user WHERE email = ?", (email,))
+        user = cursor.fetchone()
+        conn.close()
+
+        if user and check_password_hash(user['password_hash'], password_attempt):
+            session['user_id'] = user['id']
+            session['user_email'] = user['email']
+            flash('Login successful!', 'success')
+            return redirect(url_for('profile')) # Or index
+        else:
+            flash('Login failed. Check email and password.', 'danger')
+            return redirect(url_for('login'))
+
+    return render_template('login.html')
 
 
 @app.route('/profile')
