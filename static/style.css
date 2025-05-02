@@ -1,19 +1,97 @@
+/* Global Settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
+    background-color: #f4f4f9; /* Light background color */
+    color: #333; /* Dark text color for readability */
     padding: 20px;
 }
 
+/* Header */
 h1 {
-    color: #ff6f61;
+    text-align: center;
+    font-size: 2.5em;
+    color: #4CAF50; /* Green color for the title */
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+    display: block;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    resize: none;
+    margin-bottom: 20px;
 }
 
 button {
-    background-color: #ff6f61;
+    background-color: #4CAF50;
     color: white;
-    border: none;
     padding: 10px 20px;
+    border: none;
     border-radius: 5px;
+    font-size: 1.2em;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Recipe Display */
+pre {
+    background-color: #fafafa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 1em;
+    white-space: pre-wrap; /* Allows long text to wrap */
+    word-wrap: break-word; /* Breaks long words into the next line */
+}
+
+/* Section Styling for Previous Request */
+hr {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+p em {
+    font-style: italic;
+    color: #555;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+    
+    button {
+        font-size: 1em;
+    }
 }
