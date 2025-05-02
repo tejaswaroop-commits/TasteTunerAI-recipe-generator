@@ -5,6 +5,8 @@
 {% block content %}
     <h1>Generate a Recipe</h1>
     <form action="{{ url_for('generate_recipe') }}" method="post">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
         <label for="recipe_input">Describe what you'd like to cook (ingredients, cuisine, diet, time, calories):</label><br>
         <textarea id="recipe_input" name="recipe_input" rows="4" cols="50" required></textarea><br><br>
         <button type="submit">Generate Recipe</button>
