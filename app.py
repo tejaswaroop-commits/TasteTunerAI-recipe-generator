@@ -16,7 +16,7 @@ import google.generativeai as genai
 # --- Dataclass Definition ---
 @dataclass
 class RecipeCriteria:
-    ingredients_available: List[str] = field(default _ factory=list)
+    ingredients_available: List[str] = field(default_factory=list)
     cuisine_preference: Optional[str] = None
     dietary_restrictions: List[str] = field(default_factory=list)
     max_prep_time_minutes: Optional[int] = None
